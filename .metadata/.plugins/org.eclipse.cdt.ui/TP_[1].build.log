@@ -1,0 +1,8 @@
+20:01:41 **** Incremental Build of configuration Debug for project TP_[1] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\TP_[1].o" "..\\src\\TP_[1].c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\operaciones-matematicas.o" "..\\src\\operaciones-matematicas.c" 
+gcc -o TP_[1].exe "src\\TP_[1].o" "src\\inputs.o" "src\\operaciones-matematicas.o" "src\\validaciones.o" 
+
+20:01:42 Build Finished. 0 errors, 0 warnings. (took 618ms)
+

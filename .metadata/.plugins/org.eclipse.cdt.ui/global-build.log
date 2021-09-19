@@ -1,0 +1,52 @@
+19:30:53 **** Incremental Build of configuration Debug for project TP_[1] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\TP_[1].o" "..\\src\\TP_[1].c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\operaciones-matematicas.o" "..\\src\\operaciones-matematicas.c" 
+gcc -o TP_[1].exe "src\\TP_[1].o" "src\\inputs.o" "src\\operaciones-matematicas.o" "src\\validaciones.o" "src\\verificacion-numeros.o" 
+19:32:16 **** Incremental Build of configuration Debug for project TP_[1] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\operaciones-matematicas.o" "..\\src\\operaciones-matematicas.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\TP_[1].o" "..\\src\\TP_[1].c" 
+gcc -o TP_[1].exe "src\\TP_[1].o" "src\\inputs.o" "src\\operaciones-matematicas.o" "src\\validaciones.o" "src\\verificacion-numeros.o" 
+19:34:16 **** Incremental Build of configuration Debug for project TP_[1] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\operaciones-matematicas.o" "..\\src\\operaciones-matematicas.c" 
+gcc -o TP_[1].exe "src\\TP_[1].o" "src\\inputs.o" "src\\operaciones-matematicas.o" "src\\validaciones.o" "src\\verificacion-numeros.o" 
+19:36:13 **** Incremental Build of configuration Debug for project TP_[1] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\TP_[1].o" "..\\src\\TP_[1].c" 
+gcc -o TP_[1].exe "src\\TP_[1].o" "src\\inputs.o" "src\\operaciones-matematicas.o" "src\\validaciones.o" "src\\verificacion-numeros.o" 
+19:36:49 **** Incremental Build of configuration Debug for project TP_[1] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\operaciones-matematicas.o" "..\\src\\operaciones-matematicas.c" 
+gcc -o TP_[1].exe "src\\TP_[1].o" "src\\inputs.o" "src\\operaciones-matematicas.o" "src\\validaciones.o" "src\\verificacion-numeros.o" 
+Info: Nothing to build for TP_[1]
+Info: Nothing to build for TP_[1]
+19:41:22 **** Incremental Build of configuration Debug for project TP_[1] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\validaciones.o" "..\\src\\validaciones.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\TP_[1].o" "..\\src\\TP_[1].c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+..\src\inputs.c: In function 'PedirInt':
+..\src\inputs.c:19:10: warning: format '%f' expects argument of type 'float *', but argument 2 has type 'int *' [-Wformat=]
+  scanf("%f", &entero);
+          ^
+gcc -o TP_[1].exe "src\\TP_[1].o" "src\\inputs.o" "src\\operaciones-matematicas.o" "src\\validaciones.o" "src\\verificacion-numeros.o" 
+19:41:37 **** Incremental Build of configuration Debug for project TP_[1] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+gcc -o TP_[1].exe "src\\TP_[1].o" "src\\inputs.o" "src\\operaciones-matematicas.o" "src\\validaciones.o" "src\\verificacion-numeros.o" 
+19:55:29 **** Incremental Build of configuration Debug for project TP_[1] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\operaciones-matematicas.o" "..\\src\\operaciones-matematicas.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\TP_[1].o" "..\\src\\TP_[1].c" 
+gcc -o TP_[1].exe "src\\TP_[1].o" "src\\inputs.o" "src\\operaciones-matematicas.o" "src\\validaciones.o" "src\\verificacion-numeros.o" 
+19:57:55 **** Incremental Build of configuration Debug for project TP_[1] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\operaciones-matematicas.o" "..\\src\\operaciones-matematicas.c" 
+gcc -o TP_[1].exe "src\\TP_[1].o" "src\\inputs.o" "src\\operaciones-matematicas.o" "src\\validaciones.o" "src\\verificacion-numeros.o" 
+20:01:41 **** Incremental Build of configuration Debug for project TP_[1] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\TP_[1].o" "..\\src\\TP_[1].c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\operaciones-matematicas.o" "..\\src\\operaciones-matematicas.c" 
+gcc -o TP_[1].exe "src\\TP_[1].o" "src\\inputs.o" "src\\operaciones-matematicas.o" "src\\validaciones.o" 

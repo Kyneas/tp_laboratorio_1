@@ -1,0 +1,53 @@
+#include "operaciones-matematicas.h"
+
+int SumarFlotantes(int valorA, int valorB) {
+	float resultado;
+
+	resultado = valorA + valorB;
+
+	return resultado;
+}
+
+int RestarFlotantes(int valorA, int valorB) {
+	float resultado;
+
+	resultado = valorA - valorB;
+
+	return resultado;
+}
+
+int MultiplicarFlotantes(int valorA, int valorB) {
+	float resultado;
+
+	resultado = valorA * valorB;
+
+	return resultado;
+}
+
+int DividirFlotantes(int valorA, int valorB, float *resultado) {
+	int divisionHecha;
+
+	divisionHecha = 0;
+
+	if (valorB != 0) {
+		*resultado = (float) valorA / valorB;
+		divisionHecha = 1;
+	}
+
+	return divisionHecha;
+
+}
+
+unsigned long int CalcularFactorial(int flotante) {
+	unsigned long int factorial;
+	int factorialHecho;
+	int i;
+
+	factorial = 1;
+
+	for (i = flotante; i > 1; i--) {
+		factorial *= i;
+	}
+
+	return factorialHecho;
+}

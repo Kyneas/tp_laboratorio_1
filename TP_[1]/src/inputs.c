@@ -12,11 +12,11 @@ int PedirEnteroEnRangoIncluyendo(char mensaje[], int min, int max) {
 	return entero;
 }
 
-float PedirFlotante (char mensaje[]){
-	float flotante;
+int PedirInt (char mensaje[]){
+	int entero;
 
 	printf("%s", mensaje);
-	scanf("%f", &flotante);
+	scanf("%d", &entero);
 
-	return flotante;
+	return entero;
 }

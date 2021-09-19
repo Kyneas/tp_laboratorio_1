@@ -1,6 +1,6 @@
 #include "operaciones-matematicas.h"
 
-float SumarFlotantes(float valorA, float valorB) {
+int SumarInt(int valorA, int valorB) {
 	float resultado;
 
 	resultado = valorA + valorB;
@@ -8,7 +8,7 @@ float SumarFlotantes(float valorA, float valorB) {
 	return resultado;
 }
 
-float RestarFlotantes(float valorA, float valorB) {
+int RestarInt(int valorA, int valorB) {
 	float resultado;
 
 	resultado = valorA - valorB;
@@ -16,7 +16,7 @@ float RestarFlotantes(float valorA, float valorB) {
 	return resultado;
 }
 
-float MultiplicarFlotantes(float valorA, float valorB) {
+int MultiplicarInt(int valorA, int valorB) {
 	float resultado;
 
 	resultado = valorA * valorB;
@@ -24,13 +24,13 @@ float MultiplicarFlotantes(float valorA, float valorB) {
 	return resultado;
 }
 
-int DividirFlotantes(float valorA, float valorB, float *resultado) {
+int DividirInt(int valorA, int valorB, float *resultado) {
 	int divisionHecha;
 
 	divisionHecha = 0;
 
 	if (valorB != 0) {
-		*resultado = valorA / valorB;
+		*resultado = (float) valorA / valorB;
 		divisionHecha = 1;
 	}
 
@@ -38,15 +38,18 @@ int DividirFlotantes(float valorA, float valorB, float *resultado) {
 
 }
 
-float CalcularFactorial (float flotante){
-	float factorial;
-	float i;
-
-	factorial = 1;
-
-	for( i = flotante ; i > 1 ; i--){
-		factorial *= i;
+int CalcularFactorial(int entero, unsigned long int *resultado) {
+	unsigned long int factorial;
+	int factorialHecho = 0;
+	int i;
+	if (entero <= 12) {
+		factorial = 1;
+		for (i = entero; i > 1; i--) {
+			factorial *= i;
+			factorialHecho = 1;
+		}
+		*resultado = factorial;
 	}
 
-	return factorial;
+	return factorialHecho;
 }

@@ -12,12 +12,12 @@
 /// @return Numero entero validado
 int PedirEnteroEnRangoIncluyendo(char mensaje[], int min, int max);
 
-/// @fn float PedirFlotante(char[])
-/// @brief Pide al usuario ingresar un numero, puede ser flotante
+/// @fn int PedirInt(char[])
+/// @brief Pide al usuario ingresar un numero entero
 ///
 /// @param mensaje Mensaje que se muestra al pedir el numero
 /// @return Numero ingresado por el usuario
-float PedirFlotante (char mensaje[]);
+int PedirInt (char mensaje[]);
 
 
 #endif
