@@ -60,9 +60,8 @@ int main(void) {
 	printf("Bienvenido/a a mi calculadora\n");
 
 	do {
-
+		printf("__________________________________\n");
 		if (flagOperandoACargado && flagOperandoBCargado) {
-			printf("__________________________________\n");
 			printf("1. Ingresar 1er operando (A=%d)\n", operandoA);
 			printf("2. Ingresar 2do operando (B=%d)\n", operandoB);
 			printf("3. Calcular todas las operaciones\n");
@@ -73,10 +72,7 @@ int main(void) {
 					operandoB);
 			printf(" e) Calcular el factorial (%d! y %d!)\n", operandoA,
 					operandoB);
-			printf("4. Informar resultados\n");
-			printf("5. Salir\n");
 		} else if (flagOperandoACargado) {
-			printf("__________________________________\n");
 			printf("1. Ingresar 1er operando (A=%d)\n", operandoA);
 			printf("2. Ingresar 2do operando (B=x)\n");
 			printf("3. Calcular todas las operaciones\n");
@@ -85,10 +81,8 @@ int main(void) {
 			printf(" c) Calcular la division (%d/B)\n", operandoA);
 			printf(" d) Calcular la multiplicacion (%d*B)\n", operandoA);
 			printf(" e) Calcular el factorial (%d! y B!)\n", operandoA);
-			printf("4. Informar resultados\n");
-			printf("5. Salir\n");
+
 		} else if (flagOperandoBCargado) {
-			printf("__________________________________\n");
 			printf("1. Ingresar 1er operando (A=y)\n");
 			printf("2. Ingresar 2do operando (B=%d)\n", operandoB);
 			printf("3. Calcular todas las operaciones\n");
@@ -97,10 +91,9 @@ int main(void) {
 			printf(" c) Calcular la division (A/%d)\n", operandoB);
 			printf(" d) Calcular la multiplicacion (A*%d)\n", operandoB);
 			printf(" e) Calcular el factorial (A! y %d!)\n", operandoB);
-			printf("4. Informar resultados\n");
-			printf("5. Salir\n");
+
 		} else {
-			printf("__________________________________\n");
+
 			printf("1. Ingresar 1er operando (A=y)\n");
 			printf("2. Ingresar 2do operando (B=x)\n");
 			printf("3. Calcular todas las operaciones\n");
@@ -109,9 +102,10 @@ int main(void) {
 			printf(" c) Calcular la division (A/B)\n");
 			printf(" d) Calcular la multiplicacion (A*B)\n");
 			printf(" e) Calcular el factorial (A! y B!)\n");
-			printf("4. Informar resultados\n");
-			printf("5. Salir\n");
+
 		}
+		printf("4. Informar resultados\n");
+		printf("5. Salir\n");
 
 		opcion = PedirEnteroEnRangoIncluyendo("Ingrese un opcion: ", 1, 5);
 
@@ -133,8 +127,7 @@ int main(void) {
 				resultadoResta = RestarInt(operandoA, operandoB);
 				divisionHecha = DividirInt(operandoA, operandoB,
 						&resultadoDivision);
-				resultadoMultiplicacion = MultiplicarInt(operandoA,
-						operandoB);
+				resultadoMultiplicacion = MultiplicarInt(operandoA, operandoB);
 
 				factorialAHecho = CalcularFactorial(operandoA,
 						&resultadoFactorialA);
