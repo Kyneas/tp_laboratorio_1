@@ -38,14 +38,14 @@
 int main(void) {
 	setbuf(stdout, NULL);
 	int opcion;
-	int operandoA;
-	int operandoB;
+	float operandoA;
+	float operandoB;
 	int flagOperandoACargado;
 	int flagOperandoBCargado;
 	int flagCalcularOperaciones;
-	int resultadoSuma;
-	int resultadoResta;
-	int resultadoMultiplicacion;
+	float resultadoSuma;
+	float resultadoResta;
+	float resultadoMultiplicacion;
 	float resultadoDivision;
 	int divisionHecha;
 	int factorialAHecho;
@@ -62,35 +62,36 @@ int main(void) {
 	do {
 		printf("__________________________________\n");
 		if (flagOperandoACargado && flagOperandoBCargado) {
-			printf("1. Ingresar 1er operando (A=%d)\n", operandoA);
-			printf("2. Ingresar 2do operando (B=%d)\n", operandoB);
+			printf("1. Ingresar 1er operando (A=%.2f)\n", operandoA);
+			printf("2. Ingresar 2do operando (B=%.2f)\n", operandoB);
 			printf("3. Calcular todas las operaciones\n");
-			printf(" a) Calcular la suma (%d+%d)\n", operandoA, operandoB);
-			printf(" b) Calcular la resta (%d-%d)\n", operandoA, operandoB);
-			printf(" c) Calcular la division (%d/%d)\n", operandoA, operandoB);
-			printf(" d) Calcular la multiplicacion (%d*%d)\n", operandoA,
+			printf(" a) Calcular la suma (%.2f+%.2f)\n", operandoA, operandoB);
+			printf(" b) Calcular la resta (%.2f-%.2f)\n", operandoA, operandoB);
+			printf(" c) Calcular la division (%.2f/%.2f)\n", operandoA,
 					operandoB);
-			printf(" e) Calcular el factorial (%d! y %d!)\n", operandoA,
+			printf(" d) Calcular la multiplicacion (%.2f*%.2f)\n", operandoA,
+					operandoB);
+			printf(" e) Calcular el factorial (%.2f! y %.2f!)\n", operandoA,
 					operandoB);
 		} else if (flagOperandoACargado) {
-			printf("1. Ingresar 1er operando (A=%d)\n", operandoA);
+			printf("1. Ingresar 1er operando (A=%.2f)\n", operandoA);
 			printf("2. Ingresar 2do operando (B=x)\n");
 			printf("3. Calcular todas las operaciones\n");
-			printf(" a) Calcular la suma (%d+B)\n", operandoA);
-			printf(" b) Calcular la resta (%d-B)\n", operandoA);
-			printf(" c) Calcular la division (%d/B)\n", operandoA);
-			printf(" d) Calcular la multiplicacion (%d*B)\n", operandoA);
-			printf(" e) Calcular el factorial (%d! y B!)\n", operandoA);
+			printf(" a) Calcular la suma (%.2f+B)\n", operandoA);
+			printf(" b) Calcular la resta (%.2f-B)\n", operandoA);
+			printf(" c) Calcular la division (%.2f/B)\n", operandoA);
+			printf(" d) Calcular la multiplicacion (%.2f*B)\n", operandoA);
+			printf(" e) Calcular el factorial (%.2f! y B!)\n", operandoA);
 
 		} else if (flagOperandoBCargado) {
 			printf("1. Ingresar 1er operando (A=y)\n");
-			printf("2. Ingresar 2do operando (B=%d)\n", operandoB);
+			printf("2. Ingresar 2do operando (B=%.2f)\n", operandoB);
 			printf("3. Calcular todas las operaciones\n");
-			printf(" a) Calcular la suma (A+%d)\n", operandoB);
-			printf(" b) Calcular la resta (A-%d)\n", operandoB);
-			printf(" c) Calcular la division (A/%d)\n", operandoB);
-			printf(" d) Calcular la multiplicacion (A*%d)\n", operandoB);
-			printf(" e) Calcular el factorial (A! y %d!)\n", operandoB);
+			printf(" a) Calcular la suma (A+%.2f)\n", operandoB);
+			printf(" b) Calcular la resta (A-%.2f)\n", operandoB);
+			printf(" c) Calcular la division (A/%.2f)\n", operandoB);
+			printf(" d) Calcular la multiplicacion (A*%.2f)\n", operandoB);
+			printf(" e) Calcular el factorial (A! y %.2f!)\n", operandoB);
 
 		} else {
 
@@ -111,23 +112,24 @@ int main(void) {
 
 		switch (opcion) {
 		case 1:
-			operandoA = PedirInt("Ingrese el operando A: ");
+			operandoA = PedirFloat("Ingrese el operando A: ");
 			flagOperandoACargado = 1;
 			flagCalcularOperaciones = 0;
 			break;
 		case 2:
-			operandoB = PedirInt("Ingrese el operando B: ");
+			operandoB = PedirFloat("Ingrese el operando B: ");
 			flagOperandoBCargado = 1;
 			flagCalcularOperaciones = 0;
 			break;
 		case 3:
 			if (flagOperandoACargado && flagOperandoBCargado) {
 				printf("\nOperaciones realizadas\n");
-				resultadoSuma = SumarInt(operandoA, operandoB);
-				resultadoResta = RestarInt(operandoA, operandoB);
-				divisionHecha = DividirInt(operandoA, operandoB,
+				resultadoSuma = SumarFloat(operandoA, operandoB);
+				resultadoResta = RestarFloat(operandoA, operandoB);
+				divisionHecha = DividirFloat(operandoA, operandoB,
 						&resultadoDivision);
-				resultadoMultiplicacion = MultiplicarInt(operandoA, operandoB);
+				resultadoMultiplicacion = MultiplicarFloat(operandoA,
+						operandoB);
 
 				factorialAHecho = CalcularFactorial(operandoA,
 						&resultadoFactorialA);
@@ -141,26 +143,34 @@ int main(void) {
 			break;
 		case 4:
 			if (flagCalcularOperaciones) {
-				printf(" a) “El resultado de %d+%d es: %d”\n", operandoA,
+				printf(" a) “El resultado de %.2f + %.2f es: %.2f”\n", operandoA,
 						operandoB, resultadoSuma);
-				printf(" b) “El resultado de %d-%d es: %d”\n", operandoA,
+				printf(" b) “El resultado de %.2f - %.2f es: %.2f”\n", operandoA,
 						operandoB, resultadoResta);
 				if (divisionHecha) {
-					printf(" c) “El resultado de %d/%d es: %.4f”\n", operandoA,
-							operandoB, resultadoDivision);
+					printf(" c) “El resultado de %.2f / %.4f es: %.2f”\n",
+							operandoA, operandoB, resultadoDivision);
 				} else {
 					printf(" c) “No es posible dividir por cero”\n");
 				}
-				printf(" d) “El resultado de %d*%d es: %d”\n", operandoA,
+				printf(" d) “El resultado de %.2f * %.2f es: %.2f”\n", operandoA,
 						operandoB, resultadoMultiplicacion);
 				if (factorialAHecho && factorialBHecho) {
 					printf(
-							" e) “El factorial de %d es: %lu y El factorial de %d es: %lu”\n",
+							" e) “El factorial de %.2f es: %lu y El factorial de %.2f es: %lu”\n",
 							operandoA, resultadoFactorialA, operandoB,
 							resultadoFactorialB);
+				} else if (factorialAHecho) {
+					printf(
+							" e) “El factorial de %.2f es: %lu\n     El factorial de %.2f no pudo calcularse, esto de debe a que es negativo, \n     decimal o excede las capacidades de la calculadora”\n",
+							operandoA, resultadoFactorialA, operandoB);
+				} else if (factorialBHecho) {
+					printf(
+							" e) “El factorial de %.2f es: %lu\n     El factorial de %.2f no pudo calcularse, esto de debe a que es negativo, \n     decimal o excede las capacidades de la calculadora”\n",
+							operandoB, resultadoFactorialB, operandoA);
 				} else {
 					printf(
-							" e) Error, al menos un valor excede las capacidades de la calculadora o es negativo\n");
+							" e) “Error, no pudo calcularse. Los valores no deben ser negativos o decimales o excedieron las capacidades de la calculadora\n");
 				}
 
 			} else {
