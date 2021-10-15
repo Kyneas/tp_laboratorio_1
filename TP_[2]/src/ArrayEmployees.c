@@ -179,20 +179,24 @@ int sortEmployees(Employee* list, int len, int order)
 			{
 				for(int j = i + 1 ; j < len ; j++)
 				{
-					comparacion = stricmp(list[i].lastName, list[j].lastName);
-					if(comparacion > 0)
+					if(!list[i].isEmpty && !list[j].isEmpty)
 					{
-						auxiliar = list[i];
-						list[i] = list[j];
-						list[j] = auxiliar;
-						retorno = 0;
-					}else if(comparacion == 0 && list[i].sector > list[j].sector)
-					{
-						auxiliar = list[i];
-						list[i] = list[j];
-						list[j] = auxiliar;
-						retorno = 0;
+						comparacion = stricmp(list[i].lastName, list[j].lastName);
+						if(comparacion > 0)
+						{
+							auxiliar = list[i];
+							list[i] = list[j];
+							list[j] = auxiliar;
+							retorno = 0;
+						}else if(comparacion == 0 && list[i].sector > list[j].sector)
+						{
+							auxiliar = list[i];
+							list[i] = list[j];
+							list[j] = auxiliar;
+							retorno = 0;
+						}
 					}
+
 				}
 			}
 			break;
@@ -201,20 +205,24 @@ int sortEmployees(Employee* list, int len, int order)
 			{
 				for(int j = i + 1 ; j < len ; j++)
 				{
-					comparacion = stricmp(list[i].lastName, list[j].lastName);
-					if(comparacion < 0)
+					if(!list[i].isEmpty && !list[j].isEmpty)
 					{
-						auxiliar = list[i];
-						list[i] = list[j];
-						list[j] = auxiliar;
-						retorno = 0;
-					}else if(comparacion == 0 && list[i].sector < list[j].sector)
-					{
-						auxiliar = list[i];
-						list[i] = list[j];
-						list[j] = auxiliar;
-						retorno = 0;
+						comparacion = stricmp(list[i].lastName, list[j].lastName);
+						if(comparacion < 0)
+						{
+							auxiliar = list[i];
+							list[i] = list[j];
+							list[j] = auxiliar;
+							retorno = 0;
+						}else if(comparacion == 0 && list[i].sector < list[j].sector)
+						{
+							auxiliar = list[i];
+							list[i] = list[j];
+							list[j] = auxiliar;
+							retorno = 0;
+						}
 					}
+
 				}
 			}
 
@@ -332,11 +340,6 @@ int modifyEmployee(Employee* list, int pos)
 	int opcion;
 	printf("\nID   Apellido       Nombre         Salario     Sector");
 	printEmployee(list[pos]);
-//	printf("\n1. Nombre"
-//		   "\n2. Apellido"
-//		   "\n3. Sector"
-//		   "\n4. Salario");
-//	opcion = PedirEnteroEnRango("\nIngrese la opcion que quiere modificar: ","\nError, Ingrese una opcion entre 1 y 4: ",  1, 4);
 
 	opcion = MostrarMenuYElegirOpcion("\n\n1.Nombre.\n2.Apellido.\n3.Sector.\n4.Salario.", 1, 4);
 
@@ -414,7 +417,7 @@ int mostrarEmpleadosMayorASueldo(Employee* list, int length, float promedio)
 	{
 		for(int i = 0 ; i < length ; i++)
 		{
-			if(list[i].salary > promedio)
+			if(!list[i].isEmpty && list[i].salary > promedio)
 			{
 				if(flagFirstEmployee)
 				{
@@ -449,6 +452,14 @@ void MensajeAlerta(int estado, char mensajeOk[], char mensajeError[])
 	}
 }
 
+/** \brief Muestra una menu de opcion y retorna una opcion en un rango determinado
+ *
+ * \param menu Menu a mostras
+ * \param minOpcion Valor minimo de opcion para elegir en el menu
+ * \param maxOpcion Valor maximo de opcion para elegir en el menu
+ * \return Opcion validada en el rango determinado
+ *
+ */
 int MostrarMenuYElegirOpcion(char menu[], int minOpcion, int maxOpcion)
 {
 	int opcion;

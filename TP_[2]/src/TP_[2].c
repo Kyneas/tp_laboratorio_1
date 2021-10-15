@@ -1,8 +1,8 @@
 /*
  ============================================================================
  Name        : TP_[2].c
- Author      : 
- Version     :
+ Author      : Matias Ferreira
+ Version     : 1.0
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
  ============================================================================
@@ -19,22 +19,16 @@
 int main(void) {
 	setbuf(stdout, NULL);
 
-//	Employee listaEmpleados[TAM];
+	Employee listaEmpleados[TAM];
 
-	Employee listaEmpleados[TAM] = {{1, "Carlos", "Perez", 65500, 5, 0},{2, "Pedro", "Gomez", 90500, 4, 0},
-			{3, "Luis", "Gomez", 90500, 3, 0},{4, "Miguel", "Gomez", 66500.5, 2, 0},{5, "Alfredo", "Rodriguez", 70500, 1, 0},
-			{6, "Alfredo", "Gomez", 89500, 14, 0},{7, "Alfredo", "Chilavert", 78500, 20, 0}};
 	int opcion;
 	int id;
 	int position;
-//	int removeEmpOK;
-//	int modificacionOK;
 	float promedioSalario;
 	int totalSueldos;
 	int empleadosMayorSueldoPromedio;
 
-//	initEmployees(listaEmpleados, TAM);
-
+	initEmployees(listaEmpleados, TAM);
 
 	do
 	{
