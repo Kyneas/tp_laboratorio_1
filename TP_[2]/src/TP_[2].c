@@ -2,7 +2,7 @@
  ============================================================================
  Name        : TP_[2].c
  Author      : Matias Ferreira
- Version     : 1.0
+ Version     : 1.2
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
  ============================================================================
@@ -14,7 +14,7 @@
 #include "inputs.h"
 #include "ArrayEmployees.h"
 
-#define TAM 7
+#define TAM 1000
 
 int main(void) {
 	setbuf(stdout, NULL);
