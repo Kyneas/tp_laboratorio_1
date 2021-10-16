@@ -54,30 +54,6 @@ int PedirSN(char mensaje[], char mensajeError[]) {
 	return respuesta;
 }
 
-//int PedirSN(char mensaje[], char mensajeError[]) {
-//	char caracter;
-//	int respuesta = 0;
-//
-//	printf("%s", mensaje);
-//	fflush(stdin);
-//	scanf("%c", &caracter);
-//
-//	caracter = toupper(caracter);
-//
-//	while (caracter != 'S' && caracter != 'N') {
-//		printf("%s", mensajeError);
-//		fflush(stdin);
-//		scanf("%c", &caracter);
-//		caracter = toupper(caracter);
-//	}
-//
-//	if (caracter == 'S') {
-//		respuesta = 1;
-//	}
-//
-//	return respuesta;
-//}
-
 int PedirEntero(char mensaje[], char mensajeError[]) {
 	char numeroIngresado[20];
 	int entero;

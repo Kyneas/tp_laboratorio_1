@@ -17,7 +17,7 @@ static int NewID();
 int initEmployees(Employee* list, int len)
 {
 	int retorno = -1;
-	if(list != NULL && len > 1)
+	if(list != NULL && len > 0)
 	{
 		for (int i = 0 ; i < len ; i++)
 		{
@@ -47,7 +47,7 @@ lastName[],float salary,int sector)
 {
 	int retorno = -1;
 
-	if(list != NULL && len > 1)
+	if(list != NULL && len > 0)
 	{
 		for(int i = 0 ; i < len ; i++)
 		{
@@ -86,7 +86,7 @@ int chargeEmployee(Employee* list, int len)
 	float salary;
 	int sector;
 
-	if(list != NULL && len > 1)
+	if(list != NULL && len > 0)
 	{
 		PedirCadena(name, sizeof(name), "Ingrese el nombre: ", "Error, vuelva a ingresar el nombre: ");
 		PedirCadena(lastName, sizeof(lastName), "Ingrese el apellido: ", "Error, vuelva a ingresar el apellido: ");
@@ -113,7 +113,7 @@ int findEmployeeById(Employee* list, int len,int id)
 {
 	int retorno = -1;
 
-	if(list != NULL && len > 1)
+	if(list != NULL && len > 0)
 	{
 		for(int i = 0 ; i < len ; i++)
 		{
@@ -140,7 +140,7 @@ int removeEmployee(Employee* list, int len, int id)
 {
 	int retorno = -1;
 
-	if(list != NULL && len > 1)
+	if(list != NULL && len > 0)
 	{
 		for(int i = 0 ; i < len ; i++)
 		{
@@ -170,7 +170,7 @@ int sortEmployees(Employee* list, int len, int order)
 	Employee auxiliar;
 	int comparacion;
 
-	if(list != NULL && len > 1)
+	if(list != NULL && len > 0)
 	{
 
 		switch(order)
@@ -244,7 +244,7 @@ int printEmployees(Employee* list, int length)
 	int retorno = -1;
 	int flagFirstEmployee = 1;
 
-	if(list != NULL && length > 1)
+	if(list != NULL && length > 0)
 	{
 
 		for(int i = 0 ; i < length ; i++)
@@ -286,7 +286,7 @@ int thereIsEmployee (Employee* list, int length)
 {
 	int retorno = 0;
 
-	if(list != NULL && length > 1)
+	if(list != NULL && length > 0)
 	{
 		for (int i = 0 ; i < length ; i++)
 		{
@@ -312,7 +312,7 @@ int TheListIsFull(Employee* list, int length)
 {
 	int retorno = 1;
 
-	if(list != NULL && length > 1)
+	if(list != NULL && length > 0)
 	{
 		for(int i = 0 ; i < length ; i++)
 		{
@@ -383,7 +383,7 @@ float promedioSueldo(Employee* list, int length, int * totalSueldo)
 	float acumulador = 0;
 	int contador = 0;
 
-	if(list != NULL && length > 1)
+	if(list != NULL && length > 0)
 	{
 		for(int i = 0; i < length ; i++)
 		{
@@ -413,7 +413,7 @@ int mostrarEmpleadosMayorASueldo(Employee* list, int length, float promedio)
 	int contador = 0;
 	int flagFirstEmployee = 1;
 
-	if(list != NULL && length > 1)
+	if(list != NULL && length > 0)
 	{
 		for(int i = 0 ; i < length ; i++)
 		{
