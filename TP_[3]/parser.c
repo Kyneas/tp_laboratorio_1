@@ -14,10 +14,10 @@
 int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 {
 	int rtn = -1;
-	char auxID[14];
+	char auxID[12];
 	char auxNombre[128];
-	char auxHoras[14];
-	char auxSueldo[14];
+	char auxHoras[12];
+	char auxSueldo[12];
 	Employee* pEmpleado;
 
 	if (pFile != NULL && pArrayListEmployee != NULL) {

@@ -9,6 +9,58 @@
 //Horas
 //Sueldo
 
+static int NuevoID (char IDparaEmpleado[]);
+
+static int NuevoID (char IDparaEmpleado[]) {
+
+	int rtn = -1;
+
+	char idRTN[12];
+	int idAux;
+	FILE* pUltimoID;
+
+	pUltimoID = fopen ("ultimo_id.txt", "r");
+
+	if (IDparaEmpleado != NULL && pUltimoID != NULL) {
+
+		fgets (idRTN, 12, pUltimoID);
+
+		fclose(pUltimoID);
+
+		idAux = atoi (idRTN);
+
+		idAux++;
+
+		if (itoa (idAux, idRTN, 10) != NULL) {
+			strcpy (IDparaEmpleado, idRTN);
+			rtn = 0;
+		}
+	}
+
+	return rtn;
+
+}
+
+int SolicitarDatosEmpleadoYRetornarlos (char mensajeNombre[], char nombre[], int sizeNombre, char mensajeHoras[], char horas[],
+										char mensajeSueldo[], char sueldo[], char id[], char mensajeError[]) {
+	int rtn = -1;
+	int auxHoras;
+	int auxSueldo;
+
+	if (mensajeNombre != NULL && nombre != NULL && mensajeHoras != NULL && horas != NULL &&
+		mensajeSueldo != NULL && sueldo != NULL && id != NULL && mensajeError != NULL &&
+		utn_getNombre(nombre, mensajeNombre, mensajeError, sizeNombre, 3) == 0 &&
+		PedirEnteroEnRangoV3(mensajeHoras, mensajeError, 0, 325, &auxHoras, 3) == 0 &&
+		PedirEnteroEnRangoV3(mensajeSueldo, mensajeError, 1, 400000, &auxSueldo, 3) == 0 &&
+		itoa(auxHoras, horas, 10) != NULL && itoa(auxSueldo, sueldo, 10) != NULL && NuevoID(id) == 0) {
+
+		rtn = 0;
+
+	}
+
+	return rtn;
+}
+
 int employee_compareByID (void* empA, void* empB) {
 
 	int rtn = 0;
@@ -160,8 +212,8 @@ int employee_Modify (Employee* this) {
 	int rtn = -1;
 	int option;
 	char auxNombre[128];
-	char auxHoras[12];
-	char auxSueldo[12];
+	char auxHoras[14];
+	char auxSueldo[14];
 
 
 	if (this != NULL) {
@@ -216,7 +268,8 @@ int employee_show (Employee* this) {
 	int auxHoras;
 	int auxSueldo;
 
-	if (employee_getId (this, &auxID) == 0 &&
+	if (this != NULL &&
+		employee_getId (this, &auxID) == 0 &&
 		employee_getNombre(this, auxNombre) == 0 &&
 		employee_getHorasTrabajadas(this, &auxHoras) == 0 &&
 		employee_getSueldo(this, &auxSueldo) == 0) {
@@ -244,10 +297,14 @@ Employee* employee_new(){
 	pEmpleado = (Employee*) malloc (sizeof(Employee));
 
 	if (pEmpleado != NULL){
-		pEmpleado->id = 0;
-		strcpy(pEmpleado->nombre,"\0");
-		pEmpleado->horasTrabajadas = 0;
-		pEmpleado->sueldo = 0;
+//		pEmpleado->id = 0;
+//		strcpy(pEmpleado->nombre,"\0");
+//		pEmpleado->horasTrabajadas = 0;
+//		pEmpleado->sueldo = 0;
+		employee_setId(pEmpleado, 0);
+		employee_setNombre(pEmpleado, "0");
+		employee_setHorasTrabajadas(pEmpleado, 0);
+		employee_setSueldo(pEmpleado, 0);
 	}
 
 	return pEmpleado;

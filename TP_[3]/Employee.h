@@ -11,6 +11,9 @@ typedef struct
     int sueldo;
 }Employee;
 
+int SolicitarDatosEmpleadoYRetornarlos (char mensajeNombre[], char nombre[], int sizeNombre, char mensajeHoras[], char horas[],
+										char mensajeSueldo[], char sueldo[], char id[], char mensajeError[]);
+
 int employee_compareByID (void* empA, void* empB);
 int employee_compareByName (void* empA, void* empB);
 int employee_compareByHoras (void* empA, void* empB);

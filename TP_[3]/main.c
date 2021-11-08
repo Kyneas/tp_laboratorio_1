@@ -6,6 +6,7 @@
 #include "Employee.h"
 #include "parser.h"
 #include "utn_matias.h"
+#include "verificar-retornos.h"
 
 /****************************************************
     Menu:
@@ -29,7 +30,7 @@ int main()
 
 	int option;
 	int rtnOption;
-	int cargaOK = -2;
+	int cargaOK = -1;
 	int cargaLista = 1;
 	int salirSinGuardar = 1;
 	int confirmaSalirSinGuardar;
@@ -59,7 +60,8 @@ int main()
 
                 	if (cargaLista) {
 
-                		cargaOK = controller_loadFromText("data2.csv",pArrayListEmployee);
+//                		cargaOK = controller_loadFromText("data2.csv",pArrayListEmployee);
+                		retornos_loadFromAny(controller_loadFromText("data2.csv",pArrayListEmployee), &cargaOK);
                 		cargaLista = 0;
                 	}
                 	else
@@ -72,7 +74,8 @@ int main()
 
                 	if (cargaLista) {
 
-                		cargaOK = controller_loadFromBinary("data4.dat", pArrayListEmployee);
+//                		cargaOK = controller_loadFromBinary("data4.dat", pArrayListEmployee);
+                		retornos_loadFromAny(controller_loadFromBinary("data4.dat", pArrayListEmployee), &cargaOK);
                 		cargaLista = 0;
 
                 	}
@@ -84,12 +87,14 @@ int main()
                 	break;
                 case 3:
 
-                	cargaOK = controller_addEmployee(pArrayListEmployee);
+//                	cargaOK = controller_addEmployee(pArrayListEmployee);
+                	retornos_addEmployee(controller_addEmployee(pArrayListEmployee), &cargaOK);
 
                 	break;
                 case 4:
                 	if (cargaOK == 0) {
-                		controller_editEmployee(pArrayListEmployee);
+//                		controller_editEmployee(pArrayListEmployee);
+                		retornos_editEmployee(controller_editEmployee(pArrayListEmployee));
                 	}
                 	else
                 	{
@@ -99,7 +104,8 @@ int main()
                 case 5:
 
                 	if (cargaOK == 0) {
-                		controller_removeEmployee(pArrayListEmployee);
+//                		controller_removeEmployee(pArrayListEmployee);
+                		retornos_removeEmployee(controller_removeEmployee(pArrayListEmployee));
                 	}
                 	else
                 	{
@@ -109,7 +115,8 @@ int main()
                 	break;
                 case 6:
                 	if (cargaOK == 0) {
-                		controller_ListEmployee(pArrayListEmployee);
+//                		controller_ListEmployee(pArrayListEmployee);
+                		retornos_ListEmployee(controller_ListEmployee(pArrayListEmployee));
                 	}
                 	else
                 	{
@@ -119,7 +126,8 @@ int main()
                 	break;
                 case 7:
                 	if (cargaOK == 0) {
-                		controller_sortEmployee(pArrayListEmployee);
+//                		controller_sortEmployee(pArrayListEmployee);
+                		retornos_sortEmployee(controller_sortEmployee(pArrayListEmployee));
                 	}
                 	else
                 	{
@@ -128,7 +136,8 @@ int main()
                 	break;
                 case 8:
                 	if (cargaOK == 0 && cargaLista == 0) {
-                		controller_saveAsText("data2.csv", pArrayListEmployee);
+//                		controller_saveAsText("data2.csv", pArrayListEmployee);
+                		retornos_saveAsAny(controller_saveAsText("data2.csv", pArrayListEmployee));
                 		controller_saveAsBinary("data4.dat", pArrayListEmployee);
                 		salirSinGuardar=0;
                 	}
@@ -140,7 +149,8 @@ int main()
 
                 case 9:
                 	if (cargaOK == 0 && cargaLista == 0) {
-                		controller_saveAsBinary("data4.dat", pArrayListEmployee);
+//                		controller_saveAsBinary("data4.dat", pArrayListEmployee);
+                		retornos_saveAsAny(controller_saveAsBinary("data4.dat", pArrayListEmployee));
                 		controller_saveAsText("data2.csv", pArrayListEmployee);
                 		salirSinGuardar=0;
                 	}

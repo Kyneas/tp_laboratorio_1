@@ -5,7 +5,7 @@
 #include "parser.h"
 #include "utn_matias.h"
 
-void NuevoID (char IDparaEmpleado[]);
+//int NuevoID (char IDparaEmpleado[]);
 void GuardarID (char ultimoID[]);
 
 
@@ -59,8 +59,6 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 
     		rtn = parser_EmployeeFromBinary(pArchivo, pArrayListEmployee);
 
-    		printf ("\nRETORNO PARSEO BINARIO: %d\n", rtn);
-
     		fclose(pArchivo);
 
     	}
@@ -71,31 +69,61 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
     return rtn;
 }
 
-void NuevoID (char IDparaEmpleado[]) {
+//int NuevoID (char IDparaEmpleado[]) {
+//
+//	int rtn = -1;
+//
+//	char idRTN[12];
+//	int idAux;
+//	FILE* pUltimoID;
+//
+//	pUltimoID = fopen ("ultimo_id.txt", "r");
+//
+//	fgets (idRTN, 12, pUltimoID);
+//
+//	fclose(pUltimoID);
+//
+//	idAux = atoi (idRTN);
+//
+//	idAux++;
+//
+//	itoa (idAux, idRTN, 10);
+//
+//	strcpy (IDparaEmpleado, idRTN);
+//
+//	return rtn;
+//
+//}
 
-	char idRTN[12];
-	int idAux;
-	FILE* pUltimoID;
-
-	pUltimoID = fopen ("ultimo_id.txt", "r");
-
-	fgets (idRTN, 12, pUltimoID);
-
-	fclose(pUltimoID);
-
-	idAux = atoi (idRTN);
-
-	printf ("\n%d\n", idAux);
-
-	idAux++;
-
-	printf ("\n%d\n", idAux);
-
-	itoa (idAux, idRTN, 10);
-
-	strcpy (IDparaEmpleado, idRTN);
-
-}
+//int NuevoID (char IDparaEmpleado[]) {
+//
+//	int rtn = -1;
+//
+//	char idRTN[12];
+//	int idAux;
+//	FILE* pUltimoID;
+//
+//	pUltimoID = fopen ("ultimo_id.txt", "r");
+//
+//	if (IDparaEmpleado != NULL && pUltimoID != NULL) {
+//
+//		fgets (idRTN, 12, pUltimoID);
+//
+//		fclose(pUltimoID);
+//
+//		idAux = atoi (idRTN);
+//
+//		idAux++;
+//
+//		if (itoa (idAux, idRTN, 10) != NULL) {
+//			strcpy (IDparaEmpleado, idRTN);
+//			rtn = 0;
+//		}
+//	}
+//
+//	return rtn;
+//
+//}
 
 void GuardarID (char ultimoID[]) {
 
@@ -116,29 +144,94 @@ void GuardarID (char ultimoID[]) {
  * \return int
  *
  */
+//int controller_addEmployee(LinkedList* pArrayListEmployee)
+//{
+//	int rtn = -2;
+//	char auxID[11];
+//	char auxNombre[128];
+//	char auxHoras[11];
+//	char auxSueldo[11];
+//	Employee* pEmpleado;
+//
+//	if (pArrayListEmployee != NULL) {
+//
+//		if (utn_getNombre(auxNombre, "\nIngrese nombre: ", "\nError, ingrese un nombre valido.", sizeof(auxNombre), 3) == 0 &&
+//			PedirEnteroChar("\nIngrese las horas: ", "\nError, ingrese horas validas.", auxHoras, 3) == 0 &&
+//			PedirEnteroChar("\nIngrese sueldo: ", "\nError, ingrese un sueldo valido", auxSueldo, 3) == 0) {
+//
+//			NuevoID(auxID);
+//
+//			rtn = -1;
+//
+//			pEmpleado = employee_newParametros(auxID, auxNombre, auxHoras, auxSueldo);
+//
+//			if (pEmpleado != NULL) {
+//				ll_add(pArrayListEmployee, pEmpleado);
+//				GuardarID (auxID);
+//				rtn = 0;
+//			}
+//
+//		}
+//
+//	}
+//
+//    return rtn;
+//}
+
+//int controller_addEmployee(LinkedList* pArrayListEmployee)
+//{
+//	int rtn = -2;
+//	char auxID[11];
+//	char auxNombre[128];
+//	int horas;
+//	char auxHoras[11];
+//	int sueldo;
+//	char auxSueldo[11];
+//	Employee* pEmpleado;
+//
+//	if (pArrayListEmployee != NULL) {
+//
+//		if (utn_getNombre(auxNombre, "\nIngrese nombre: ", "\nError, ingrese un nombre valido.", sizeof(auxNombre), 3) == 0 &&
+//			PedirEnteroEnRangoV3("\nIngrese las horas: ", "\nError, ingrese horas validas.", 1, 120, &horas, 3) == 0 &&
+//			PedirEnteroEnRangoV3("\nIngrese sueldo: ", "\nError, ingrese un sueldo valido", 15000, 400000, &sueldo, 3) == 0 &&
+//			itoa(horas, auxHoras, 10) != NULL && itoa(sueldo, auxSueldo, 10) != NULL && NuevoID(auxID) == 0) {
+//
+//			rtn = -1;
+//
+//			pEmpleado = employee_newParametros(auxID, auxNombre, auxHoras, auxSueldo);
+//
+//			if (pEmpleado != NULL && ll_add(pArrayListEmployee, pEmpleado) == 0) {
+//				GuardarID (auxID);
+//				rtn = 0;
+//			}
+//
+//		}
+//
+//	}
+//
+//    return rtn;
+//}
+
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
-	int rtn = -2;
-	char auxID[11];
+	int rtn = -3;
 	char auxNombre[128];
-	char auxHoras[11];
-	char auxSueldo[11];
+	char auxHoras[12];
+	char auxSueldo[12];
+	char auxID[12];
 	Employee* pEmpleado;
 
 	if (pArrayListEmployee != NULL) {
-
-		if (utn_getNombre(auxNombre, "\nIngrese nombre: ", "\nError, ingrese un nombre valido.", sizeof(auxNombre), 3) == 0 &&
-			PedirEnteroChar("\nIngrese las horas: ", "\nError, ingrese horas validas.", auxHoras, 3) == 0 &&
-			PedirEnteroChar("\nIngrese sueldo: ", "\nError, ingrese un sueldo valido", auxSueldo, 3) == 0) {
-
-			NuevoID(auxID);
-
+		rtn = -2;
+		if (SolicitarDatosEmpleadoYRetornarlos("\nIngrese el nombre del empleado: ", auxNombre, sizeof(auxNombre),
+											   "\nIngrese la horas totales del mes realizadas: ", auxHoras,
+											   "\nIngrese el sueldo correspondiente al mes previo: ", auxSueldo,
+											   auxID, "\nError en la toma del dato. ") == 0) {
 			rtn = -1;
 
 			pEmpleado = employee_newParametros(auxID, auxNombre, auxHoras, auxSueldo);
 
-			if (pEmpleado != NULL) {
-				ll_add(pArrayListEmployee, pEmpleado);
+			if (pEmpleado != NULL && ll_add(pArrayListEmployee, pEmpleado) == 0) {
 				GuardarID (auxID);
 				rtn = 0;
 			}
@@ -192,7 +285,6 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
     return rtn;
 }
-
 
 /** \brief Baja de empleado
  *
@@ -261,8 +353,6 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 		len = ll_len(pArrayListEmployee);
 		rtn = -1;
 
-		printf ("\nTotal %d\n", len);
-
 		if (len > 0) {
 
 			for (int i = 0 ; i < len ; i++) {
@@ -291,13 +381,13 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
-    int rtn = -2;
+    int rtn = -3;
     int criterio;
     int orden;
 
     if (pArrayListEmployee != NULL) {
 
-    	rtn = -1;
+    	rtn = -2;
 
     	if (PedirEnteroEnRangoV3("\nBajo que criterio quiere ordenar la lista?"
     			                 "\n1. ID."
@@ -309,25 +399,42 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
     				             "\n2. Ascendente.", "\nError", 1, 2, &orden, 4) == 0) {
 
     		orden--;
+    		rtn = -1;
 
     		switch (criterio) {
 
     		case 1:
-    			ll_sort(pArrayListEmployee, employee_compareByID, orden);
-    			rtn = 0;
+
+    			printf ("\nOrdenando lista...\n");
+    			if (ll_sort(pArrayListEmployee, employee_compareByID, orden) == 0) {
+        			rtn = 0;
+    			}
     			break;
+
     		case 2:
-    			ll_sort(pArrayListEmployee, employee_compareByName, orden);
-    			rtn = 1;
+
+    			printf ("\nOrdenando lista...\n");
+    			if (ll_sort(pArrayListEmployee, employee_compareByName, orden) == 0) {
+        			rtn = 0;
+    			}
     			break;
+
     		case 3:
-    			ll_sort(pArrayListEmployee, employee_compareByHoras, orden);
-    			rtn = 2;
+
+    			printf ("\nOrdenando lista...\n");
+    			if (ll_sort(pArrayListEmployee, employee_compareByHoras, orden) == 0) {
+        			rtn = 0;
+    			}
     			break;
+
     		case 4:
-    			ll_sort(pArrayListEmployee, employee_compareBySalario, orden);
-    			rtn = 3;
+
+    			printf ("\nOrdenando lista...\n");
+    			if (ll_sort(pArrayListEmployee, employee_compareBySalario, orden) == 0) {
+        			rtn = 0;
+    			}
     			break;
+
     		}
 
     	}
@@ -398,14 +505,16 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 {
-	int rtn = -1;
+	int rtn = -2;
 	FILE* pArchivo;
 	int len;
 	Employee* auxEmpleado;
 
-	if (path != NULL && pArrayListEmployee != NULL) {\
+	if (path != NULL && pArrayListEmployee != NULL) {
 
 		pArchivo = fopen (path, "wb");
+
+		rtn = -1;
 
 		if (pArchivo != NULL) {
 
@@ -423,12 +532,9 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 
 			rtn = 0;
 
-			printf ("\nExito al guardar.\n");
-
 		}
 
 	}
 
     return rtn;
 }
-
