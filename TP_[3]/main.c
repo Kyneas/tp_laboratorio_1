@@ -33,6 +33,7 @@ int main()
 	int cargaOK = -1;
 	int cargaLista = 1;
 	int salirSinGuardar = 1;
+	int modificacionHecha = 0;
 	int confirmaSalirSinGuardar;
 
 
@@ -43,7 +44,7 @@ int main()
 
         	rtnOption = PedirEnteroEnRangoV3("\n-------------------MENU----------------------------\n"
         								     "1. Cargar los datos de los empleados desde el archivo data.csv (modo texto)\n"
-    										 "2. Cargar los datos de los empleados desde el archivo data.csv (modo binario)\n"
+    										 "2. Cargar los datos de los empleados desde el archivo data.bin (modo binario)\n"
     										 "3. Alta de empleado\n"
     										 "4. Modificar datos de empleado\n"
     										 "5. Baja de empleado\n"
@@ -59,10 +60,9 @@ int main()
                 case 1:
 
                 	if (cargaLista) {
+                		retornos_loadFromAny(controller_loadFromText("data.csv",pArrayListEmployee), &cargaOK);
+                		cargaLista = cargaOK;
 
-//                		cargaOK = controller_loadFromText("data2.csv",pArrayListEmployee);
-                		retornos_loadFromAny(controller_loadFromText("data2.csv",pArrayListEmployee), &cargaOK);
-                		cargaLista = 0;
                 	}
                 	else
                 	{
@@ -73,10 +73,9 @@ int main()
                 case 2:
 
                 	if (cargaLista) {
+                		retornos_loadFromAny(controller_loadFromBinary("data_bin.dat", pArrayListEmployee), &cargaOK);
+                		cargaLista = cargaOK;
 
-//                		cargaOK = controller_loadFromBinary("data4.dat", pArrayListEmployee);
-                		retornos_loadFromAny(controller_loadFromBinary("data4.dat", pArrayListEmployee), &cargaOK);
-                		cargaLista = 0;
 
                 	}
                 	else
@@ -86,15 +85,18 @@ int main()
 
                 	break;
                 case 3:
-
-//                	cargaOK = controller_addEmployee(pArrayListEmployee);
                 	retornos_addEmployee(controller_addEmployee(pArrayListEmployee), &cargaOK);
+                	if (cargaOK == 0) {
+                		salirSinGuardar = 1;
+                	}
 
                 	break;
                 case 4:
                 	if (cargaOK == 0) {
-//                		controller_editEmployee(pArrayListEmployee);
-                		retornos_editEmployee(controller_editEmployee(pArrayListEmployee));
+                		retornos_editEmployee(controller_editEmployee(pArrayListEmployee), &modificacionHecha);
+                		if (modificacionHecha == 0) {
+                			salirSinGuardar = 1;
+                		}
                 	}
                 	else
                 	{
@@ -104,8 +106,10 @@ int main()
                 case 5:
 
                 	if (cargaOK == 0) {
-//                		controller_removeEmployee(pArrayListEmployee);
-                		retornos_removeEmployee(controller_removeEmployee(pArrayListEmployee));
+                		retornos_removeEmployee(controller_removeEmployee(pArrayListEmployee), &modificacionHecha);
+                		if (modificacionHecha == 0) {
+                			salirSinGuardar = 1;
+                		}
                 	}
                 	else
                 	{
@@ -115,7 +119,6 @@ int main()
                 	break;
                 case 6:
                 	if (cargaOK == 0) {
-//                		controller_ListEmployee(pArrayListEmployee);
                 		retornos_ListEmployee(controller_ListEmployee(pArrayListEmployee));
                 	}
                 	else
@@ -126,8 +129,10 @@ int main()
                 	break;
                 case 7:
                 	if (cargaOK == 0) {
-//                		controller_sortEmployee(pArrayListEmployee);
-                		retornos_sortEmployee(controller_sortEmployee(pArrayListEmployee));
+                		retornos_sortEmployee(controller_sortEmployee(pArrayListEmployee), &modificacionHecha);
+                		if (modificacionHecha == 0) {
+                			salirSinGuardar = 1;
+                		}
                 	}
                 	else
                 	{
@@ -136,8 +141,7 @@ int main()
                 	break;
                 case 8:
                 	if (cargaOK == 0 && cargaLista == 0) {
-//                		controller_saveAsText("data2.csv", pArrayListEmployee);
-                		retornos_saveAsAny(controller_saveAsText("data2.csv", pArrayListEmployee));
+                		retornos_saveAsAny(controller_saveAsText("data.csv", pArrayListEmployee));
                 		controller_saveAsBinary("data4.dat", pArrayListEmployee);
                 		salirSinGuardar=0;
                 	}
@@ -149,8 +153,7 @@ int main()
 
                 case 9:
                 	if (cargaOK == 0 && cargaLista == 0) {
-//                		controller_saveAsBinary("data4.dat", pArrayListEmployee);
-                		retornos_saveAsAny(controller_saveAsBinary("data4.dat", pArrayListEmployee));
+                		retornos_saveAsAny(controller_saveAsBinary("data_bin.dat", pArrayListEmployee));
                 		controller_saveAsText("data2.csv", pArrayListEmployee);
                 		salirSinGuardar=0;
                 	}
@@ -173,6 +176,8 @@ int main()
     }while(rtnOption == 0 && confirmaSalirSinGuardar == 0);
 
     printf ("FIN");
+
+    BorrarEmpleadosYBorrarLinkedList(pArrayListEmployee);
 
     return 0;
 }

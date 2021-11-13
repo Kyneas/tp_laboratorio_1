@@ -6,7 +6,7 @@
 #ifndef UTN_MATIAS_H_
 #define UTN_MATIAS_H_
 
-int StringIsNumber(char buffer[], int longitud);
+int StringIsNumber(char buffer[]);
 
 int EsNombreInvalido (char nombre[]);
 

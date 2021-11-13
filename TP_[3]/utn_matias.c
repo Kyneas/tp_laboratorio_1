@@ -1,16 +1,30 @@
 #include "utn_matias.h"
 
+/// @fn int EsNumeroEnteroValido(char[], int, int*)
+/// @brief Valida que el string ingresada sea un numero valido
+///
+/// @param buffer String con los datos a verificar
+/// @param longitud Largo del string con los datos a verificar
+/// @param numero Direccion de memoria donde se guardara el numero en caso de ser valido
+/// @return 1 si es numero, 0 en caso de error
 static int EsNumeroEnteroValido(char buffer[], int longitud, int* numero);
 
 static int myGets(char * cadena, int longitud);
 
+/// @fn int validarNombre(char*, int)
+/// @brief Valida que el string ingresado sea un nombre correcto,  y de serlo se asegura de devolverlo
+/// 	   con las iniciales en mayuscula
+///
+/// @param cadena Nombre a verificar
+/// @param limite sizeof del nombre
+/// @return -1 en caso de error, 0 en caso de ser un nombre
 static int validarNombre(char* cadena, int limite);
 
-int StringIsNumber(char buffer[], int longitud) {
+int StringIsNumber(char buffer[]) {
 	int esNumero = 1;
-	int largo = strnlen(buffer,longitud);
+	int largo = strlen(buffer);
 
-	for (int i = 0; i < longitud && buffer[i] != '\0'; i++) {
+	for (int i = 0; i < largo && buffer[i] != '\0'; i++) {
 		if((buffer[0] == '+' || buffer[0] == '-') && largo > 1){
 			continue;
 		}
@@ -165,7 +179,7 @@ int PedirEnteroChar (char mensaje[], char mensajeError[], char numero[], int rei
 
 		do {
 
-			if (myGets(numeroIngresado, sizeof(numeroIngresado)) && StringIsNumber(numeroIngresado, sizeof(numeroIngresado))) {
+			if (myGets(numeroIngresado, sizeof(numeroIngresado)) && StringIsNumber(numeroIngresado)) {
 
 				rtn = 0;
 

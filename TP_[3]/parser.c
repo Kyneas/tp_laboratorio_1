@@ -28,24 +28,23 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 
 			fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", auxID, auxNombre, auxHoras, auxSueldo);
 
-			if (StringIsNumber(auxID, sizeof(auxID)) &&
-//				!EsNombreInvalido(auxNombre) &&
-				StringIsNumber(auxHoras, sizeof(auxHoras)) &&
-				StringIsNumber(auxSueldo, sizeof(auxSueldo))) {
+			if (StringIsNumber(auxID) &&
+				!EsNombreInvalido(auxNombre) &&
+				StringIsNumber(auxHoras) &&
+				StringIsNumber(auxSueldo)) {
 
 				pEmpleado = employee_newParametros(auxID, auxNombre, auxHoras, auxSueldo);
 
 				if (pEmpleado != NULL) {
-					ll_add(pArrayListEmployee, pEmpleado);
+					if (ll_add(pArrayListEmployee, pEmpleado) == 0) {
 					rtn = 0;
+					}else {
+						employee_delete(pEmpleado);
+					}
 				}
-
 			}
-
 		}
-
 	}
-
     return rtn;
 }
 
@@ -67,14 +66,14 @@ int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
 
 			pEmpleado = employee_new();
 
-			if (fread (pEmpleado, sizeof(Employee), 1, pFile)==1){
-				ll_add(pArrayListEmployee, pEmpleado);
+			if (pEmpleado != NULL && fread (pEmpleado, sizeof(Employee), 1, pFile)==1){
+				if (ll_add(pArrayListEmployee, pEmpleado) == 0) {
+					rtn = 0;
+				} else {
+					employee_delete (pEmpleado);
+				}
 			}
-
-			rtn = 0;
-
 		}
 	}
-
     return rtn;
 }

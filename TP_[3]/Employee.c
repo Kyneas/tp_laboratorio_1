@@ -4,11 +4,11 @@
 #include "Employee.h"
 #include "utn_matias.h"
 
-//ID
-//Nombre
-//Horas
-//Sueldo
-
+/// @fn int NuevoID(char[])
+/// @brief Lee el ultimo ID almaceda en un archivo, lo aumenta en 1 y lo retorna aumentado
+///
+/// @param IDparaEmpleado Direccion de memoria donde se almacena el id
+/// @return -1 por error, 0 si pudo leer el archivo y aumentarlo
 static int NuevoID (char IDparaEmpleado[]);
 
 static int NuevoID (char IDparaEmpleado[]) {
@@ -39,6 +39,29 @@ static int NuevoID (char IDparaEmpleado[]) {
 
 	return rtn;
 
+}
+
+void BorrarEmpleadosYBorrarLinkedList (LinkedList* pArrayListEmployee) {
+	int len;
+	Employee* empleadoAux;
+	if (pArrayListEmployee != NULL) {
+		len = ll_len(pArrayListEmployee);
+
+		for (int i = 0 ; i < len ; i++) {
+			empleadoAux = (Employee*) ll_get(pArrayListEmployee, i);
+			if (empleadoAux != NULL) {
+				employee_delete(empleadoAux);
+			}
+		}
+
+		ll_deleteLinkedList(pArrayListEmployee);
+	}
+}
+
+void employee_delete(Employee* this) {
+	if (this != NULL) {
+		free(this);
+	}
 }
 
 int SolicitarDatosEmpleadoYRetornarlos (char mensajeNombre[], char nombre[], int sizeNombre, char mensajeHoras[], char horas[],
@@ -78,16 +101,10 @@ int employee_compareByID (void* empA, void* empB) {
 		employee_getId(empleadoB,&idBAux);
 
 		if (idAAux > idBAux) {
-
 			rtn = 1;
-
 		} else if (idAAux < idBAux){
-
 			rtn = -1;
-
 		}
-
-
 	}
 
 	return rtn;
@@ -190,20 +207,15 @@ int employee_returnIndexByID (LinkedList* pArrayListEmployee, int idBuscado) {
 
 			for (int i = 0 ; i < len ; i++) {
 
-				pEmpleado = ll_get(pArrayListEmployee, i);
+				pEmpleado = (Employee*)ll_get(pArrayListEmployee, i);
 
 				if (pEmpleado != NULL && employee_getId(pEmpleado, &id) == 0 && id == idBuscado) {
-
 					index = i;
 					break;
 				}
-
 			}
-
 		}
-
 	}
-
 	return index;
 }
 
@@ -212,44 +224,39 @@ int employee_Modify (Employee* this) {
 	int rtn = -1;
 	int option;
 	char auxNombre[128];
-	char auxHoras[14];
-	char auxSueldo[14];
+	int auxHoras;
+	int auxSueldo;
 
 
 	if (this != NULL) {
 
 		if (employee_show(this) == 0 &&
-			PedirEnteroEnRangoV3("\nQue opcion quiere modificar?\n1. Nombre.\n2. Horas.\n3. Sueldo.\n", "\nError.", 1, 3, &option, 3) == 0) {
+			PedirEnteroEnRangoV3("\nQue opcion quiere modificar?\n1. Nombre.\n2. Horas.\n3. Sueldo.\n4. Cancelar modificación.", "\nError.", 1, 4, &option, 3) == 0) {
 
 			switch (option) {
 
 			case 1:
-
 				if (utn_getNombre(auxNombre, "\nIngrese el nuevo nombre: ", "\nError.", sizeof(auxNombre), 3) == 0) {
-
 					employee_setNombre(this, auxNombre);
 					rtn = 0;
-
 				}
 
 				break;
 			case 2:
-
-				if (PedirEnteroChar("\nIngrese las nuevas horas: ", "\nError. ", auxHoras, 3) == 0) {
-
-					employee_setHorasTrabajadas(this, atoi(auxHoras));
+				if (PedirEnteroEnRangoV3("\nIngrese las nuevas horas: ", "\nError.", 0, 325, &auxHoras, 3) == 0) {
+					employee_setHorasTrabajadas(this, auxHoras);
 					rtn = 0;
 				}
 
 				break;
 			case 3:
-
-				if (PedirEnteroChar("\nIngrese sueldo: ", "\nError, ingrese un sueldo valido", auxSueldo, 3) == 0) {
-
-					employee_setSueldo(this, atoi(auxSueldo));
+				if (PedirEnteroEnRangoV3("\nIngrese el nuevo monto del sueldo: ", "\nError.", 1, 400000, &auxSueldo, 3) == 0) {
+					employee_setSueldo(this, auxSueldo);
 					rtn = 0;
-
 				}
+				break;
+			case 4:
+				rtn = 1;
 				break;
 			}
 

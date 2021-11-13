@@ -11,8 +11,8 @@ void retornos_loadFromAny(int estado, int *retorno) {
 }
 
 void retornos_addEmployee (int estado, int *retorno) {
-	*retorno = estado;
 
+	*retorno = estado;
 	if (estado == 0) {
 		printf ("\nEl empleado se agrego correctamente.");
 	} else if (estado == -1) {
@@ -24,21 +24,26 @@ void retornos_addEmployee (int estado, int *retorno) {
 	}
 }
 
-void retornos_editEmployee (int estado) {
+void retornos_editEmployee (int estado, int *retorno) {
+	*retorno = estado;
 
 	if (estado == 0) {
 		printf ("\nCliente modificado con exito.");
+	}else if (estado == 1) {
+		printf ("\nModificación cancelada.");
 	}else if (estado == -1) {
 		printf ("\nError en modificacion del empleado.");
-	} else if (estado == -2) {
-		printf ("\nError, ingreso muchas veces una opcion incorrecta. Reintente luego.");
-	} else {
+	} else if (estado == -4) {
 		printf ("\nError en la lista.");
+	} else {
+		printf ("\nError, ingreso muchas veces una opcion incorrecta. Reintente luego.");
 	}
 
 }
 
-void retornos_removeEmployee (int estado) {
+void retornos_removeEmployee (int estado, int *retorno) {
+	*retorno = estado;
+
 	if (estado == 0) {
 		printf ("\nCliente eliminado con exito.");
 	} else if (estado == -1) {
@@ -58,7 +63,9 @@ void retornos_ListEmployee (int estado) {
 	}
 }
 
-void retornos_sortEmployee (int estado) {
+void retornos_sortEmployee (int estado, int *retorno) {
+	*retorno = estado;
+
 	if (estado == 0) {
 		printf ("\nLa lista se a ordenado exitosamente.");
 	} else if (estado == -1) {
